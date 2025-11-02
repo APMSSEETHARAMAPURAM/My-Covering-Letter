@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Covering Letter - M. Madhulatha</title>
+<style>
+  body {
+    width: 210mm;
+    margin: 15mm auto;
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    line-height: 1.9;
+    color: #000;
+    background: #f8f9fa;
+  }
+
+  .page {
+    background: white;
+    padding: 25px 35px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    position: relative;
+  }
+
+  h2 {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 25px;
+    font-size: 22px;
+  }
+
+  /* Photo box */
+  .photo-box {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    width: 110px;
+    height: 130px;
+    border: 1px solid #000;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Editable inputs */
+  .editable {
+    border: none;
+    border-bottom: 1px dotted #aaa;
+    width: 100%;
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    margin: 4px 0;
+    outline: none;
+    background: transparent;
+  }
+
+  .editable::placeholder {
+    color: #555;
+  }
+
+  .editable:focus {
+    border-bottom: 1px solid #000;
+  }
+
+  /* Letter content */
+  .section {
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+
+  .signature {
+    margin-top: 40px;
+  }
+
+  /* Footer contact info */
+  .footer-contact {
+    text-align: center;
+    font-size: 17px;
+    margin-top: 60px;
+    line-height: 1.6;
+    border-top: 1px solid #aaa;
+    padding-top: 10px;
+  }
+
+  /* Buttons */
+  .print-btn, .photo-input {
+    display: block;
+    margin: 15px auto;
+    padding: 10px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .print-btn:hover, .photo-input:hover {
+    background-color: #0056b3;
+  }
+
+  @media print {
+    body {
+      background: white;
+      margin: 0;
+    }
+    .page {
+      box-shadow: none;
+      border: none;
+    }
+    .print-btn, .photo-input {
+      display: none;
+    }
+    .editable {
+      border: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Photo box -->
+  <div class="photo-box" id="photoBox">
+    <span style="font-size: 10px; color: gray;">Upload Photo</span>
+  </div>
+
+  <h2>Covering Letter</h2>
+
+  <!-- TO SECTION -->
+  <div class="section">
+    <strong>To</strong><br>
+    <input type="text" class="editable" placeholder="Enter Recipient Name / Designation">
+    <input type="text" class="editable" placeholder="Enter Company Name">
+    <input type="text" class="editable" placeholder="Enter Company Address Line 1">
+    <input type="text" class="editable" placeholder="Enter Company Address Line 2">
+    <input type="text" class="editable" placeholder="Enter City / State / PIN">
+  </div>
+
+  <!-- LETTER BODY -->
+  <div class="section">
+    <p>Dear Sir/Madam,</p>
+
+    <p>
+      I am currently working at <strong>Ford Motor Private Limited, Sholinganallur, Chennai</strong>, where I have gained 
+      <strong>over two years of experience</strong> in the field of <strong>Virtual Manufacturing and Design</strong>. During this period, 
+      I have developed strong technical expertise, teamwork, and analytical problem-solving abilities in a real-time 
+      production environment.
+    </p>
+
+    <p>
+      I am now seeking to further advance my career by applying for the position of 
+      <strong>Virtual Manufacturing Engineer</strong> at your esteemed organization. I believe that my knowledge, 
+      dedication, and technical skills will enable me to contribute effectively to your company’s growth and innovation.
+    </p>
+
+    <p>
+      I would greatly appreciate the opportunity to discuss how my experience aligns with your requirements. 
+      I am confident that my passion and expertise will make me a valuable addition to your team.
+    </p>
+
+    <p>
+      Thank you for considering my application. I look forward to your positive response.
+    </p>
+
+    <p>Yours sincerely,</p>
+
+    <div class="signature">
+      <strong>M. Madhulatha</strong>
+    </div>
+  </div>
+
+  <!-- Footer contact -->
+  <div class="footer-contact">
+    M. Madhulatha<br>
+    Seetaramapuram, Nellore District, Andhra Pradesh<br>
+    8341277362 | madhulatha2518@gmail.com
+  </div>
+</div>
+
+<!-- Photo Upload -->
+<input type="file" accept="image/*" class="photo-input" onchange="previewPhoto(event)" value="Upload Photo">
+
+<!-- Print Button -->
+<button class="print-btn" onclick="window.print()">🖨️ Print / Preview</button>
+
+<script>
+function previewPhoto(event) {
+  const file = event.target.files[0];
+  const photoBox = document.getElementById('photoBox');
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      photoBox.innerHTML = `<img src="${e.target.result}" alt="Photo">`;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+</script>
+
+</body>
+</html>
